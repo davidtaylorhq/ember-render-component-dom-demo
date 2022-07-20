@@ -12,7 +12,10 @@ function renderComponent({ element, args, componentName, wrapperComponent }) {
     component.didReceiveAttrs();
   }
 
-  component.renderer.appendTo(component, element);
+  getOwner(wrapperComponent)
+    .lookup('renderer:-dom')
+    .appendTo(component, element);
+
   return component;
 }
 
